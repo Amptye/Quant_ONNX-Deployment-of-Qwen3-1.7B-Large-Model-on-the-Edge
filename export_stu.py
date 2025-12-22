@@ -3,14 +3,14 @@ import os
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import transformers
 
-# ================= TODO 1: 实现万能掩码补丁 (Monkey Patch) =================
+# ================= TODO 1: 实现掩码补丁 =================
 # 提示：Qwen3 原生代码中的 mask 生成逻辑包含 ONNX 不支持的算子。
 # 你需要编写一个函数，根据输入的 input_ids 形状，生成一个上三角掩码矩阵。
 # 要求：
 # 1. 能够从 kwargs 中尝试获取 input_shape (batch, seq_len)
 # 2. 生成一个全为负无穷(float.min)的矩阵，仅保留上三角(triu)
 # 3. 返回形状必须是 (batch, 1, seq_len, seq_len)
-def nuclear_mask_patch(*args, **kwargs):
+def mask_patch(*args, **kwargs):
     # --- 在这里实现代码 ---
     
     # 1. 解析参数 (提示：优先检查 kwargs 中的 input_shape)
@@ -27,7 +27,7 @@ def nuclear_mask_patch(*args, **kwargs):
     return mask # 确保返回的是 4D 张量
 
 # 应用补丁
-transformers.masking_utils.create_causal_mask = nuclear_mask_patch
+transformers.masking_utils.create_causal_mask = mask_patch
 print(">>> [Patch Applied] 已应用掩码补丁")
 
 
