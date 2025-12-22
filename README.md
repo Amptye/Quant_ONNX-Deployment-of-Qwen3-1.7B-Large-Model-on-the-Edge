@@ -66,7 +66,7 @@ python quant_stu.py
 ### 3.3：推理对话 Demo (Inference)
 任务：创建文件 chat.py, 编写一个简单的对话脚本，验证量化后的模型是否能正常“说人话”。
 ```bash
-python chatbot_stud.py
+python chatbot_stu.py
 ```
 
 ## 实验观察
