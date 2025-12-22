@@ -52,7 +52,7 @@ huggingface-cli download --resume-download Qwen/Qwen3-1.7B --local-dir Qwen3-1.7
 
 ## 3. 实验步骤
 
-### 3.1 步骤一：编写导出脚本 (Export)注意：由于 Qwen3 使用了较新的注意力机制实现（如 vmap）
+### 3.1 步骤一：编写导出脚本 (Export)注意：由于 Qwen3 使用了较新的注意力机制实现（如 vmap）,需要特殊处理机制
 运行以下脚本会产生导出的模型文件
 ```bash
 python export_stdu.py
