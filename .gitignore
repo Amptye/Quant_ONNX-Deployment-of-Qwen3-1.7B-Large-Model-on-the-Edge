@@ -1,0 +1,10 @@
+Qwen3-1.7B/
+
+model*
+onnx*
+qwen3*
+
+# Python 字节码缓存
+__pycache__/
+*.py[cod]
+*$py.class
