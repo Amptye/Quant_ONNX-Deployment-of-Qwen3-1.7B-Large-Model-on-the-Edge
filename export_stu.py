@@ -10,6 +10,8 @@ import config_stu
 # os.environ['OMP_NUM_THREADS'] = '1'
 # os.environ['MKL_NUM_THREADS'] = '1'
 
+fixed_length = config_stu.FIXED_SEQ_LEN
+
 # ================= TODO 1: 实现掩码补丁 =================
 # 提示：Qwen3 原生代码中的 mask 生成逻辑包含 ONNX 不支持的算子。
 # 你需要编写一个函数，根据输入的 input_ids 形状，生成一个上三角掩码矩阵。
@@ -21,7 +23,7 @@ def mask_patch(*args, **kwargs):
     # --- 在这里实现代码 ---
     
     # 1. 解析参数 (提示：优先检查 kwargs 中的 input_shape)
-    bsz, seq_len = 1, 32 # 默认值
+    bsz, seq_len = 1, (fixed_length or 32) # 默认值
     
     # [YOUR CODE HERE] 解析 input_shape
     input_shape = kwargs.get("input_shape", None)
@@ -104,7 +106,6 @@ except Exception as e:
 model_wrapper = Qwen3ONNXWrapper(base_model)
 
 # 构造虚拟输入
-fixed_length = config_stu.FIXED_SEQ_LEN
 dummy_input_ids = torch.ones((1, fixed_length or 32), dtype=torch.long)
 dummy_attention_mask = torch.ones((1, fixed_length or 32), dtype=torch.long)
 

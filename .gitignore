@@ -3,6 +3,7 @@ Qwen3-1.7B/
 model*
 onnx*
 qwen3*
+Constant*
 
 # Python 字节码缓存
 __pycache__/

@@ -2,7 +2,7 @@ QWEN3_PATH = "./Qwen3-1.7B"
 MODEL_FP32 = "qwen3_fp32.onnx"
 MODEL_INT8 = "qwen3_int8.onnx"
 # 统一使用固定长度：32/64/128/256/512...   自动填充，不固定长度：0/None/False
-FIXED_SEQ_LEN = 32
+FIXED_SEQ_LEN = 128
 
 CALIBRATION_DATA = [
             "人工智能是计算机科学的一个分支。",
