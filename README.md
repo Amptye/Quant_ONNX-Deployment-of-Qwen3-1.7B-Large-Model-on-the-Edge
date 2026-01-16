@@ -80,7 +80,7 @@ python chatbot_stu.py
 
 ## 思考题：
 在任务三中，目前的推理逻辑每生成一个字都要重新计算整个序列。如果想要加速，应该引入什么机制？（提示：KV Cache）  
-**答：** 要加速自回归文本生成过程，应该引入KV Cache（键值缓存）机制。在Transformer的注意力计算中，每个token都会生成对应的Key和Value，在传统的生成方式中，每次生成新token时都需要重新计算整个序列，导致大量重复计算。而KV Cache通过缓存历史token的Key和Value，每次只需要计算新token的内容，再并把新产生的 Key、Value 放入缓存，显著提高了生成速度，特别在长对话时可以带来较大的的性能提升。
+**答：** 要加速文本生成过程，应该引入KV Cache（键值缓存）机制。在Transformer的计算中，每个token都会生成对应的Key和Value，在传统的生成方式中，每次生成新token时都需要重新计算整个序列，导致大量重复计算。而KV Cache通过缓存历史token的Key和Value，每次只需要计算新token的内容，再并把新产生的 Key、Value 放入缓存，显著提高了生成速度，特别在长对话时可以带来较大的的性能提升。
 
 # 提交方式：
 填写登记表：https://table.nju.edu.cn/dtable/forms/bc0d4e0e-3ec8-452a-8c99-9999cf70d932/
